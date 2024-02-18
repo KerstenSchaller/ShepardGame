@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsbypfhvqxgsw"]
+
+[ext_resource type="PackedScene" uid="uid://bgjoj4yci340s" path="res://assets/Shepherd.aseprite" id="1_04mll"]
+[ext_resource type="Script" path="res://src/ShepherdAnimationPlayer.cs" id="2_c581q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq1in"]
+load_path = "res://.godot/imported/Shepherd.aseprite.png-68682b2742b72a14f2f1fd45a4a51549.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukw7t"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_qq1in")
+region = Rect2(10, 17, 10, 16)
+margin = Rect2(3, 0, 4, 1)
+
+[node name="Shepherd" instance=ExtResource("1_04mll")]
+texture = SubResource("AtlasTexture_ukw7t")
+
+[node name="AnimationPlayer" parent="." index="0"]
+script = ExtResource("2_c581q")

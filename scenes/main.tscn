@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpqhgi4yh3ly5"]
+
+[ext_resource type="PackedScene" uid="uid://dtlavepph7yig" path="res://scenes/World.tscn" id="1_5q5hk"]
+[ext_resource type="PackedScene" uid="uid://cxrka8q0mgjtw" path="res://scenes/Dog.tscn" id="2_jljbg"]
+[ext_resource type="PackedScene" uid="uid://dspe8tkqo04b0" path="res://scenes/Shepherd.tscn" id="3_77w7g"]
+[ext_resource type="PackedScene" uid="uid://bvp2fiv3j7da2" path="res://scenes/Sheep.tscn" id="4_8ajbn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_5q5hk")]
+position = Vector2(-15, -31)
+
+[node name="Dog" parent="." instance=ExtResource("2_jljbg")]
+z_index = 1
+position = Vector2(304, 308)
+
+[node name="Shepherd" parent="." instance=ExtResource("3_77w7g")]
+z_index = 1
+position = Vector2(294, 319)
+
+[node name="Sheep2" parent="." instance=ExtResource("4_8ajbn")]
+z_index = 1
+position = Vector2(366, 255)
+
+[node name="Sheep3" parent="." instance=ExtResource("4_8ajbn")]
+z_index = 1
+position = Vector2(352, 235)
+
+[node name="Sheep" parent="." instance=ExtResource("4_8ajbn")]
+z_index = 1
+position = Vector2(345, 251)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(329, 309)
+zoom = Vector2(3, 3)

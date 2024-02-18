@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxrka8q0mgjtw"]
+
+[ext_resource type="PackedScene" uid="uid://b1x0n31fdrl2c" path="res://scenes/DogAnimationPlayer.tscn" id="1_hrifc"]
+[ext_resource type="Script" path="res://src/Dog.cs" id="1_vkoli"]
+[ext_resource type="Script" path="res://src/DogVision.cs" id="3_dhv2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikqvf"]
+radius = 2.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vcoh"]
+load_path = "res://.godot/imported/Dog.aseprite.png-d382ab2718ea0c82b5adf819ae6cddbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mj65"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_4vcoh")
+region = Rect2(26, 24, 13, 10)
+margin = Rect2(2, 3, 3, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsb15"]
+radius = 18.0
+
+[node name="Dog" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_vkoli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ikqvf")
+
+[node name="DogAnimationPlayer" parent="." instance=ExtResource("1_hrifc")]
+position = Vector2(-7, -14)
+texture = SubResource("AtlasTexture_0mj65")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_dhv2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lsb15")

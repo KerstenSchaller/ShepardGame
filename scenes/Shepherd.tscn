@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dspe8tkqo04b0"]
+
+[ext_resource type="Script" path="res://src/Shepherd.cs" id="1_3k5xo"]
+[ext_resource type="PackedScene" uid="uid://dsbypfhvqxgsw" path="res://scenes/shepherdAnimationPlayer.tscn" id="1_r7mxb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq1in"]
+load_path = "res://.godot/imported/Shepherd.aseprite.png-68682b2742b72a14f2f1fd45a4a51549.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eql63"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_qq1in")
+region = Rect2(10, 17, 10, 16)
+margin = Rect2(3, 0, 4, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxr3y"]
+radius = 2.23607
+
+[node name="Shepherd" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3k5xo")
+
+[node name="Shepherd" parent="." instance=ExtResource("1_r7mxb")]
+position = Vector2(-7, -16)
+texture = SubResource("AtlasTexture_eql63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xxr3y")

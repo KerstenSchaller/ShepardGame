@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmlcsiwuc8s0w"]
+
+[ext_resource type="PackedScene" uid="uid://cfl8xxwh5nflj" path="res://assets/Sheep.aseprite" id="1_ntdeu"]
+[ext_resource type="Script" path="res://src/DogAnimationPlayer.cs" id="2_7mnpi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnhu2"]
+load_path = "res://.godot/imported/Sheep.aseprite.png-17acf0e09b63f9f098c78a34bb033bd4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6ch2"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_dnhu2")
+region = Rect2(13, 17, 9, 9)
+margin = Rect2(3, 7, 7, 7)
+
+[node name="Sheep" instance=ExtResource("1_ntdeu")]
+position = Vector2(-8, -16)
+texture = SubResource("AtlasTexture_w6ch2")
+
+[node name="AnimationPlayer" parent="." index="0"]
+script = ExtResource("2_7mnpi")
