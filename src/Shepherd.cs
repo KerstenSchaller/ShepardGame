@@ -18,6 +18,17 @@ public partial class Shepherd : CharacterBody2D
 		var dogPos = dog.Position;
 		heading = dogPos - this.Position;
 
+		if (Input.IsActionPressed("mouseClickLeft"))
+		{
+			var mousePos = GetGlobalMousePosition();
+			this.Velocity = (mousePos - this.Position).Normalized() * (float)delta * 1200;
+		}
+		else
+		{
+			this.Velocity = new Vector2();
+
+		}
+		MoveAndSlide();
 	
 	}
 }
