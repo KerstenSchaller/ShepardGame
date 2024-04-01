@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnrngvblth0am"]
+
+[ext_resource type="Texture2D" uid="uid://dw7k4ph0srvss" path="res://assets/Landscape.png" id="1_71kfv"]
+
+[node name="Tree1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -23)
+texture = ExtResource("1_71kfv")
+region_enabled = true
+region_rect = Rect2(96, 16, 32, 53)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(3, 3)
+scale = Vector2(0.6, 0.95)
+polygon = PackedVector2Array(1.66667, -2.63158, -3.33333, -5.78947, -11.6667, -4.73684, -5, -0.526316)

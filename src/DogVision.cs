@@ -14,7 +14,7 @@ public partial class DogVision : Area2D
 		var overlappingBodies = GetOverlappingBodies();
 		foreach(var b in overlappingBodies)
 		{
-			GD.Print("Something hit" + b.ToString());
+			//GD.Print("Something hit" + b.ToString());
 		}
 	}
 }

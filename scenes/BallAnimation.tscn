@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://pw5ml81twu2e"]
+
+[ext_resource type="PackedScene" uid="uid://bjrrsjfit1t1c" path="res://assets/Objects/Ball.aseprite" id="1_l03mt"]
+[ext_resource type="Script" path="res://src/BallAnimationPlayer.cs" id="3_0kxo3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_446u7"]
+load_path = "res://.godot/imported/Ball.aseprite.png-c9ea4ef05e86e89c4cd99e96b72e87b8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epxhu"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_446u7")
+region = Rect2(0, 0, 2, 2)
+
+[node name="BallAnimation" instance=ExtResource("1_l03mt")]
+position = Vector2(-1, -1)
+texture = SubResource("AtlasTexture_epxhu")
+script = ExtResource("3_0kxo3")

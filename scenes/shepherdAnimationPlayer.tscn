@@ -9,10 +9,11 @@ load_path = "res://.godot/imported/Shepherd.aseprite.png-68682b2742b72a14f2f1fd4
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukw7t"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_qq1in")
-region = Rect2(10, 17, 10, 16)
-margin = Rect2(3, 0, 4, 1)
+region = Rect2(20, 16, 10, 16)
+margin = Rect2(3, 0, 4, 0)
 
-[node name="Shepherd" instance=ExtResource("1_04mll")]
+[node name="Shepherd2" instance=ExtResource("1_04mll")]
+position = Vector2(-7, -16)
 texture = SubResource("AtlasTexture_ukw7t")
 
 [node name="AnimationPlayer" parent="." index="0"]

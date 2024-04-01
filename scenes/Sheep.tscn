@@ -2,25 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://bmlcsiwuc8s0w" path="res://scenes/sheepAnimationPlayer.tscn" id="1_eefd2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v4vuo"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjf8n"]
+size = Vector2(13, 4)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnhu2"]
 load_path = "res://.godot/imported/Sheep.aseprite.png-17acf0e09b63f9f098c78a34bb033bd4.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uerqi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvmjg"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_dnhu2")
 region = Rect2(13, 0, 13, 8)
 margin = Rect2(0, 8, 3, 8)
 
 [node name="Sheep" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_v4vuo")
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_vjf8n")
 
 [node name="Sheep" parent="." instance=ExtResource("1_eefd2")]
 position = Vector2(-7, -16)
-texture = SubResource("AtlasTexture_uerqi")
+texture = SubResource("AtlasTexture_mvmjg")
