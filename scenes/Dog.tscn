@@ -10,7 +10,7 @@ size = Vector2(8, 3)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vcoh"]
 load_path = "res://.godot/imported/Dog.aseprite.png-d382ab2718ea0c82b5adf819ae6cddbf.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvqat"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrsmw"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_4vcoh")
 region = Rect2(26, 24, 13, 10)
@@ -30,7 +30,7 @@ disabled = true
 
 [node name="DogAnimationPlayer" parent="." instance=ExtResource("1_hrifc")]
 position = Vector2(-7, -13)
-texture = SubResource("AtlasTexture_yvqat")
+texture = SubResource("AtlasTexture_mrsmw")
 
 [node name="DogVision" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpqhgi4yh3ly5"]
+
+[ext_resource type="PackedScene" uid="uid://dtlavepph7yig" path="res://World.tscn" id="1_bloiy"]
+[ext_resource type="Texture2D" uid="uid://6uqbygtnueji" path="res://assets/Charachters.png" id="2_dvfwe"]
+[ext_resource type="PackedScene" uid="uid://ciax2ki25ib16" path="res://dog.tscn" id="3_7aq5m"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_bloiy")]
+
+[node name="WorldCamera2D" type="Camera2D" parent="."]
+position = Vector2(340, 340)
+zoom = Vector2(4, 4)
+
+[node name="schaefer1" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(311, 320)
+texture = ExtResource("2_dvfwe")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="schaaf3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(378, 285)
+texture = ExtResource("2_dvfwe")
+region_enabled = true
+region_rect = Rect2(32, 16, 16, 16)
+
+[node name="schaaf2" type="Sprite2D" parent="schaaf3"]
+z_index = 1
+position = Vector2(-5, -18)
+texture = ExtResource("2_dvfwe")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(32, 16, 16, 16)
+
+[node name="schaaf2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(353, 277)
+texture = ExtResource("2_dvfwe")
+region_enabled = true
+region_rect = Rect2(32, 16, 16, 16)
+
+[node name="Dog" parent="." instance=ExtResource("3_7aq5m")]
+position = Vector2(322, 319)

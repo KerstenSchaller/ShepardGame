@@ -6,6 +6,7 @@ class AutonomousAgent
 {
     float mass;
     float maxSpeed;
+    float maxForce;
     Vector2 acceleration;
     Vector2 velocity;
 
@@ -19,15 +20,17 @@ class AutonomousAgent
         }
     }
 
-    public AutonomousAgent(float _maxSpeed, float _mass)
+    public AutonomousAgent(float _maxSpeed, float _maxForce, float _mass)
     {
         maxSpeed = _maxSpeed;
+        maxForce = _maxForce;
         mass = _mass;
     }
 
-    public void setDesiredVelocity(Vector2 desired)
+    public void setTarget(Vector2 desired = new Vector2())
     {
         var steering = desired.Normalized()*maxSpeed - velocity;
+        steering = (steering.LengthSquared() >= maxForce) ? steering.Normalized()*maxForce:steering;
         applyForce(steering);
     }
 
@@ -35,5 +38,7 @@ class AutonomousAgent
     {
         acceleration += force/mass;
         velocity += acceleration;
+        GD.Print("s: " + velocity.Length() + " f: " + force.Length() + " mxF: " + maxForce);
+
     }
 }

@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 public partial class Dog : CharacterBody2D
 {
 	Shepherd shepherd;
-	AutonomousAgent dogbrain = new AutonomousAgent(1500, 2);
+	AutonomousAgent dogbrain = new AutonomousAgent(1500,1500, 70);
 
 	public override void _Ready()
 	{
@@ -23,16 +23,16 @@ public partial class Dog : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 
-		var shepherdDir = shepherd.Position - this.Position;
+		var shepherdDir = shepherd.Position - this.Position; //seek target
 
 		// move near shepherd
 		if(shepherdDir.Length() > 30)
 		{
-			dogbrain.setDesiredVelocity(shepherdDir);		
+			dogbrain.setTarget(shepherdDir);		
 		}
 		else
 		{
-			dogbrain.setDesiredVelocity(new Vector2());
+			dogbrain.setTarget();
 		}
 		this.Velocity = dogbrain.Velocity*(float)delta;
 		MoveAndSlide();

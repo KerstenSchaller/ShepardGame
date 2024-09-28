@@ -20,8 +20,8 @@ public partial class Shepherd : CharacterBody2D
 		{
 			var mousePos = GetGlobalMousePosition();
 			
-			throwBall(mousePos); 
-			GD.Print("mpos: " + mousePos);
+			//throwBall(mousePos); 
+			//GD.Print("mpos: " + mousePos);
 		}
 
 		// Movement
