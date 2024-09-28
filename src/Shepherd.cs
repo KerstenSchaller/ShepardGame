@@ -6,10 +6,13 @@ public partial class Shepherd : CharacterBody2D
 	CharacterBody2D dog;
 	public Vector2 heading = new Vector2();
 
+	Ball ball = new Ball();
+
 
 	public override void _Ready()
 	{
 		dog = GetNode<CharacterBody2D>("../Dog");
+		AddChild(ball);
 
 
 	}
@@ -20,7 +23,11 @@ public partial class Shepherd : CharacterBody2D
 		{
 			var mousePos = GetGlobalMousePosition();
 			
-			//throwBall(mousePos); 
+			if(ball != null)
+			{
+				throwBall(mousePos); 
+				ball = null;
+			}
 			//GD.Print("mpos: " + mousePos);
 		}
 
@@ -57,4 +64,11 @@ public partial class Shepherd : CharacterBody2D
 		ball.Position = new Vector2(this.Position.X,this.Position.Y-4);
 		ball.throwTo(targetPos);
 	}
+
+	internal void giveBall()
+	{
+		ball = new Ball();
+		AddChild(ball);
+	}
+
 }

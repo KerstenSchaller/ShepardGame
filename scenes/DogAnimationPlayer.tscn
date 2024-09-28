@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1x0n31fdrl2c"]
 
-[ext_resource type="PackedScene" uid="uid://ct1qesdtlm30h" path="res://assets/Dog.aseprite" id="1_3pbke"]
+[ext_resource type="PackedScene" uid="uid://bf2qfjfsrkdjh" path="res://assets/Dog.aseprite" id="1_3pbke"]
 [ext_resource type="Script" path="res://src/DogAnimationPlayer.cs" id="2_vhpmw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vcoh"]
@@ -9,8 +9,8 @@ load_path = "res://.godot/imported/Dog.aseprite.png-d382ab2718ea0c82b5adf819ae6c
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v15k"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_4vcoh")
-region = Rect2(22, 34, 4, 10)
-margin = Rect2(5, 4, 12, 6)
+region = Rect2(13, 11, 11, 13)
+margin = Rect2(2, 1, 5, 3)
 
 [node name="Dog" instance=ExtResource("1_3pbke")]
 texture = SubResource("AtlasTexture_3v15k")

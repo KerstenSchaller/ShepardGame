@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://src/Shepherd.cs" id="1_3k5xo"]
 [ext_resource type="PackedScene" uid="uid://dsbypfhvqxgsw" path="res://scenes/shepherdAnimationPlayer.tscn" id="1_r7mxb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xxr3y"]
-radius = 2.23607
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq1in"]
 load_path = "res://.godot/imported/Shepherd.aseprite.png-68682b2742b72a14f2f1fd45a4a51549.ctex"
 
@@ -15,18 +12,21 @@ atlas = SubResource("CompressedTexture2D_qq1in")
 region = Rect2(20, 16, 10, 16)
 margin = Rect2(3, 0, 4, 0)
 
-[node name="Shepherd" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxr3y"]
+radius = 3.0
+
+[node name="Shepherd" type="CharacterBody2D" groups=["shepherd"]]
 y_sort_enabled = true
 collision_layer = 7
-collision_mask = 2
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_3k5xo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xxr3y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="Shepherd" parent="." instance=ExtResource("1_r7mxb")]
+[node name="ShepherdSprite" parent="." instance=ExtResource("1_r7mxb")]
 texture = SubResource("AtlasTexture_4qn8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xxr3y")

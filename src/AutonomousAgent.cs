@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Behaviours
 {
-    interface Behaviour
+    public interface Behaviour
     {
         Vector2 getDesiredDirection();
     }
@@ -21,9 +21,29 @@ namespace Behaviours
             this.target = _target;
             this.parent = _parent;
         }
+
+        public void changeTarget(Node2D _target)
+        {
+            this.target = _target;
+        }
         public Vector2 getDesiredDirection()
         {
             return target.Position - parent.Position;
+        }
+    }
+
+    class Flee : Behaviour
+    {
+        Node2D target;
+        Node2D parent;
+        public Flee(Node2D _target, Node2D _parent)
+        {
+            this.target = _target;
+            this.parent = _parent;
+        }
+        public Vector2 getDesiredDirection()
+        {
+            return -(target.Position - parent.Position);
         }
     }
 }
@@ -59,7 +79,10 @@ class AutonomousAgent
 
     public void addBehaviour(Behaviours.Behaviour _behaviour)
     {
-        behaviours.Add(_behaviour);
+        if(!behaviours.Contains(_behaviour))
+        {
+            behaviours.Add(_behaviour);
+        }
     }
 
     public void removeBehaviour(Behaviours.Behaviour _behaviour)
@@ -74,7 +97,7 @@ class AutonomousAgent
 
         acceleration += steering/mass;
         velocity += acceleration;
-        GD.Print("s: " + velocity.Length() + " f: " + steering.Length() + " mxF: " + maxForce);
+        //GD.Print("s: " + velocity.Length() + " f: " + steering.Length() + " mxF: " + maxForce);
 
     }
 }

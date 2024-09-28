@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Ball : Node2D
+public partial class Ball : CharacterBody2D
 {
 	Vector2 targetPos;
 
@@ -9,12 +9,18 @@ public partial class Ball : Node2D
 
 	public override void _Ready()
 	{
-		animator = GetNode<AnimationPlayer>("BallAnimation/AnimationPlayer");
+		//animator = GetNode<AnimationPlayer>("BallAnimation/AnimationPlayer");
+
 	}
 
 	public void throwTo(Vector2 _targetPos)
 	{
 		targetPos = _targetPos;
+	}
+
+	public void taken()
+	{
+		QueueFree();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -26,12 +32,12 @@ public partial class Ball : Node2D
 			if(direction.Length() >= 2)
 			{
 				this.Position = this.Position + direction.Normalized()*100*(float)delta;
-				animator.CurrentAnimation = "rolling";
-				animator.Play();
+				//animator.CurrentAnimation = "rolling";
+				//animator.Play();
 			}
 			else
 			{
-				animator.Stop();
+				//animator.Stop();
 				targetPos = new Vector2();
 			}
 

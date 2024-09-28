@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cojko7j3vpqb0"]
+[gd_scene load_steps=6 format=3 uid="uid://bm7vsk21qxssg"]
 
 [ext_resource type="Script" path="res://src/Ball.cs" id="1_etp00"]
-[ext_resource type="PackedScene" uid="uid://pw5ml81twu2e" path="res://scenes/BallAnimation.tscn" id="1_r3tns"]
+[ext_resource type="PackedScene" path="res://scenes/BallAnimation.tscn" id="1_r3tns"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_446u7"]
 load_path = "res://.godot/imported/Ball.aseprite.png-c9ea4ef05e86e89c4cd99e96b72e87b8.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mvfyp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydwp5"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_446u7")
 region = Rect2(0, 0, 2, 2)
 
-[node name="Ball" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfr3v"]
+size = Vector2(2, 2)
+
+[node name="Ball" type="CharacterBody2D" groups=["ball"]]
 script = ExtResource("1_etp00")
 
 [node name="BallAnimation" parent="." instance=ExtResource("1_r3tns")]
-texture = SubResource("AtlasTexture_mvfyp")
+texture = SubResource("AtlasTexture_ydwp5")
 script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 7
+shape = SubResource("RectangleShape2D_bfr3v")
