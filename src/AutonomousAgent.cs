@@ -1,6 +1,32 @@
+using Behaviours;
 using Godot;
 using System;
+using System.Collections.Generic;
 
+
+
+namespace Behaviours
+{
+    interface Behaviour
+    {
+        Vector2 getDesiredDirection();
+    }
+
+    class Seek : Behaviour
+    {
+        Node2D target;
+        Node2D parent;
+        public Seek(Node2D _target, Node2D _parent)
+        {
+            this.target = _target;
+            this.parent = _parent;
+        }
+        public Vector2 getDesiredDirection()
+        {
+            return target.Position - parent.Position;
+        }
+    }
+}
 
 class AutonomousAgent
 {
@@ -10,12 +36,16 @@ class AutonomousAgent
     Vector2 acceleration;
     Vector2 velocity;
 
-
+    List<Behaviours.Behaviour> behaviours = new List<Behaviours.Behaviour>();
     public Vector2 Velocity
     {
         get
         {
             acceleration = new Vector2();
+            foreach(var behaviour in behaviours)
+            {
+                applyForce(behaviour.getDesiredDirection());
+            }
             return velocity;
         }
     }
@@ -27,18 +57,24 @@ class AutonomousAgent
         mass = _mass;
     }
 
-    public void setTarget(Vector2 desired = new Vector2())
+    public void addBehaviour(Behaviours.Behaviour _behaviour)
+    {
+        behaviours.Add(_behaviour);
+    }
+
+    public void removeBehaviour(Behaviours.Behaviour _behaviour)
+    {
+        behaviours.Remove(_behaviour);
+    }
+
+    public void applyForce(Vector2 desired)
     {
         var steering = desired.Normalized()*maxSpeed - velocity;
         steering = (steering.LengthSquared() >= maxForce) ? steering.Normalized()*maxForce:steering;
-        applyForce(steering);
-    }
 
-    public void applyForce(Vector2 force)
-    {
-        acceleration += force/mass;
+        acceleration += steering/mass;
         velocity += acceleration;
-        GD.Print("s: " + velocity.Length() + " f: " + force.Length() + " mxF: " + maxForce);
+        GD.Print("s: " + velocity.Length() + " f: " + steering.Length() + " mxF: " + maxForce);
 
     }
 }

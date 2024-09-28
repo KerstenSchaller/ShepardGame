@@ -1,3 +1,4 @@
+using Behaviours;
 using Godot;
 using System;
 using System.Net.Http.Headers;
@@ -7,10 +8,13 @@ public partial class Dog : CharacterBody2D
 {
 	Shepherd shepherd;
 	AutonomousAgent dogbrain = new AutonomousAgent(1500,1500, 70);
+	Behaviours.Seek seek;
 
 	public override void _Ready()
 	{
 		shepherd = GetNode<Shepherd>("../Shepherd");
+		seek = new Behaviours.Seek(shepherd,this);
+		
 	}
 
 	public float getAcceleration()
@@ -28,11 +32,11 @@ public partial class Dog : CharacterBody2D
 		// move near shepherd
 		if(shepherdDir.Length() > 30)
 		{
-			dogbrain.setTarget(shepherdDir);		
+			dogbrain.addBehaviour(seek);	
 		}
 		else
 		{
-			dogbrain.setTarget();
+			dogbrain.removeBehaviour(seek);
 		}
 		this.Velocity = dogbrain.Velocity*(float)delta;
 		MoveAndSlide();
