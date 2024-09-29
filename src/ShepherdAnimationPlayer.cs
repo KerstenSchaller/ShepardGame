@@ -29,8 +29,8 @@ public partial class ShepherdAnimationPlayer : AnimationPlayer, I8Directional
 	{
 		Shepherd shepherd = GetParent<Node2D>().GetParent<Shepherd>();
 		var velocity = shepherd.Velocity.Normalized();
-		//AnimationHelper.setAnimationToDirection(velocity, this);
-		//animationHelper.setAnimationToDirection( shepherd.heading, this);
+		//animationHelper.setAnimationToDirection(velocity, this);
+		animationHelper.setAnimationToDirection( shepherd.heading, this);
 
 	}
 
