@@ -7,9 +7,18 @@ using System.Collections.Generic;
 
 namespace Behaviours
 {
-    public interface Behaviour
+    public abstract class Behaviour
     {
-        Vector2 getDesiredDirection();
+        protected bool enabled = true;
+        public abstract Vector2 getDesiredDirection();
+        public virtual bool Enabled
+        {
+            get { return enabled; }
+            set { enabled = value; }
+        }
+
+        public void disable(){enabled = false;}
+        public void enable(){enabled = true; }
     }
 
     class Seek : Behaviour
@@ -26,10 +35,27 @@ namespace Behaviours
         {
             this.target = _target;
         }
-        public Vector2 getDesiredDirection()
+        public override Vector2 getDesiredDirection()
         {
             return target.Position - parent.Position;
         }
+    }
+
+    class CircleAround : Behaviour
+    {
+        Node2D target;
+        Node2D parent;
+        public CircleAround(Node2D _target, Node2D _parent)
+        {
+            this.target = _target;
+            this.parent = _parent;
+        }
+
+        public override Vector2 getDesiredDirection()
+        {
+            return (target.Position - parent.Position).Orthogonal();
+        }
+
     }
 
     class Flee : Behaviour
@@ -41,7 +67,7 @@ namespace Behaviours
             this.target = _target;
             this.parent = _parent;
         }
-        public Vector2 getDesiredDirection()
+        public override Vector2 getDesiredDirection()
         {
             return -(target.Position - parent.Position);
         }
@@ -64,7 +90,10 @@ class AutonomousAgent
             acceleration = new Vector2();
             foreach(var behaviour in behaviours)
             {
-                applyForce(behaviour.getDesiredDirection());
+                if(behaviour.Enabled)
+                {
+                    applyForce(behaviour.getDesiredDirection());
+                }
             }
             return velocity;
         }
@@ -93,7 +122,7 @@ class AutonomousAgent
     public void applyForce(Vector2 desired)
     {
         var steering = desired.Normalized()*maxSpeed - velocity;
-        steering = (steering.LengthSquared() >= maxForce) ? steering.Normalized()*maxForce:steering;
+        steering = (steering.Length() >= maxForce) ? steering.Normalized()*maxForce:steering;
 
         acceleration += steering/mass;
         velocity += acceleration;

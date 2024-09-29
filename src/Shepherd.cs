@@ -65,7 +65,7 @@ public partial class Shepherd : CharacterBody2D
 		ball.throwTo(targetPos);
 	}
 
-	internal void giveBall()
+	internal void receiveBall()
 	{
 		ball = new Ball();
 		AddChild(ball);

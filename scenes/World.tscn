@@ -265,11 +265,11 @@ script = ExtResource("5_t2d82")
 light_mask = 3
 visibility_layer = 3
 z_index = 2
-position = Vector2(400, 343)
+position = Vector2(621, 437)
 
 [node name="Dog" parent="." instance=ExtResource("1_2fne7")]
 z_index = 2
-position = Vector2(259, 283)
+position = Vector2(674, 379)
 
 [node name="Sheep2" parent="." instance=ExtResource("3_gmu8b")]
 z_index = 2

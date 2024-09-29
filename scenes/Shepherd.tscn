@@ -6,7 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq1in"]
 load_path = "res://.godot/imported/Shepherd.aseprite.png-68682b2742b72a14f2f1fd45a4a51549.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qn8s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_muig6"]
 resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_qq1in")
 region = Rect2(20, 16, 10, 16)
@@ -26,7 +26,7 @@ script = ExtResource("1_3k5xo")
 zoom = Vector2(4, 4)
 
 [node name="ShepherdSprite" parent="." instance=ExtResource("1_r7mxb")]
-texture = SubResource("AtlasTexture_4qn8s")
+texture = SubResource("AtlasTexture_muig6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xxr3y")

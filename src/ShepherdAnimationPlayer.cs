@@ -7,7 +7,7 @@ using System.Linq;
 public partial class ShepherdAnimationPlayer : AnimationPlayer, I8Directional
 {
 
-
+	AnimationHelper animationHelper = new AnimationHelper();
 
 	Dictionary<AnimationHelper.Animations, string> animationMap = new Dictionary<AnimationHelper.Animations, string>();
 
@@ -30,7 +30,7 @@ public partial class ShepherdAnimationPlayer : AnimationPlayer, I8Directional
 		Shepherd shepherd = GetParent<Node2D>().GetParent<Shepherd>();
 		var velocity = shepherd.Velocity.Normalized();
 		//AnimationHelper.setAnimationToDirection(velocity, this);
-		AnimationHelper.setAnimationToDirection( shepherd.heading, this);
+		//animationHelper.setAnimationToDirection( shepherd.heading, this);
 
 	}
 

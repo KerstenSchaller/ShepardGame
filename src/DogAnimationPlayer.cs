@@ -7,7 +7,7 @@ using System.Linq;
 public partial class DogAnimationPlayer : AnimationPlayer, I8Directional
 {
 
-
+	AnimationHelper animationHelper = new AnimationHelper();
 
 	Dictionary<AnimationHelper.Animations, string> animationMap = new Dictionary<AnimationHelper.Animations, string>();
 
@@ -31,14 +31,14 @@ public partial class DogAnimationPlayer : AnimationPlayer, I8Directional
 		setWest();
 	}
 
+
 	public override void _PhysicsProcess(double delta)
 	{
 		var charBody2D = GetParent<Node2D>().GetParent<CharacterBody2D>();
 		var velocity = charBody2D.Velocity.Normalized();
-		AnimationHelper.setAnimationToDirection(velocity, this);
+	
+		animationHelper.setAnimationToDirection(velocity, this);
 	}
-
-
 
 	
 
